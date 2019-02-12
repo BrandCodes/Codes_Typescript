@@ -184,3 +184,58 @@ abstract class Asset{
 class Hero extends Asset{
     move(speed: number) { return true}
 }
+
+
+//////////////////////////////////////////////////////////////
+-Namespace
+
+namespace BL{
+    export class Videos{ }
+    export const url:string="www.ejemplo.com"
+}
+
+//Accediendo:
+let video: BL.Videos = new BL.Videos();
+
+//////////////////////////////////////////////////////////////
+
+-Union-Types
+
+
+let age: number | string;       //Puede ser nombre o String
+
+age = 20;
+
+age = 'Hola';
+
+age.toString();     //ambos tienen el método
+
+
+//////////////////////////////////////////////////////////////
+-Type guards
+
+//Guardian de tipo
+function isNumber(obj: number | string) : obj is number{
+    return typeof obj === 'number';
+}
+
+function isString(obj: number | string): obj is string{
+    return typeof obj === 'string';
+}
+
+function printAge(age: number | string) {
+//  Si utilizamos typeof se vuelve en automático un Guardian de tipo:
+//  if (typeof obj === 'number')
+    if (isNumber(age)) {
+        //Estamos seguros que es número
+    }
+    else {
+        //Estamos seguros que es cadena
+    }
+}
+
+
+//////////////////////////////////////////////////////////////
+
+
+
